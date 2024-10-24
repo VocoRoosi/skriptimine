@@ -1,5 +1,6 @@
 #!/bin/bash
 # kasutajat tervitav skript
 echo -n "Tere, "
-echo -n $(whoami)
+echo -n $(whoami | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
 echo "!"
+
