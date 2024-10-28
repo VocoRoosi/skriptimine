@@ -1,0 +1,21 @@
+
+#!/bin/bash
+
+# Küsi kasutajalt ainepunktide arvu
+read -p "Sisesta ainepunktide arv (taisarv): " AINEPUNKTIDE_ARV
+
+# Küsi kasutajalt nädalate arvu
+read -p "Sisesta nädalate arv (taisarv): " NADALATE_ARV
+
+# Arvuta eeldatav ajakulu
+ajakulu=$((AINEPUNKTIDE_ARV * 26))
+
+# Jagame ajakulu nädalate arvu peale ja määrame ühe kümnendkoha
+aeg=$(echo "scale=1; $ajakulu / $NADALATE_ARV" | bc)
+
+# Ümardame ülespoole
+aeg_ymarda=$(echo "($aeg + 0.9)/1" | bc)
+
+# Väljastame tulemuse ekraanile
+echo "Ühe nädala eeldatav ajakulu on: $aeg_ymarda"
+
