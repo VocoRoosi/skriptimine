@@ -1,0 +1,5 @@
+year=2016
+president="Kersti Kaljulaid"
+sentence_middle=". aastal valiti Eesti presidendiks "
+sentence="$year$sentence_middle$president"
+echo "$sentence"
