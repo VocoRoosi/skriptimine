@@ -13,5 +13,4 @@ FULL_BUSES=$((REISIJATE_ARV / KOHTADE_ARV))
 LEFTOVER_PASSENGERS=$((REISIJATE_ARV % KOHTADE_ARV))
 
 # Väljastame tulemused
-echo "Täielikult täidetud busse: $FULL_BUSES"
-echo "Inimesi, kes jäävad maha: $LEFTOVER_PASSENGERS"
+echo "$REISIJATE_ARV reisijate transportimiseks saab kasutada $FULL_BUSES $KOHTADE_ARV-kohalist bussi ja $LEFTOVER_PASSENGERS jäävad reisist ilma."
