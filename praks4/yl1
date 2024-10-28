@@ -1,0 +1,12 @@
+
+
+# Lugege kasutaja sisestatud numbrit
+echo -n "Sisesta suvaline täisarv: "
+read number
+
+# Kontrollige, kas arv on paaris või paaritu
+if [ $((number % 2)) -eq 0 ]; then
+    echo "$number on paaris."
+else
+    echo "$number on paaritu."
+fi
