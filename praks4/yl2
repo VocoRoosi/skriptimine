@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Küsi kasutajalt grupi reisijate arvu
+read -p "Sisesta grupi reisijate arv: " REISIJATE_ARV
+
+# Küsi kasutajalt kohtade arvu ühes bussis
+read -p "Sisesta kohtade arv ühes bussis: " KOHTADE_ARV
+
+# Arvuta, mitu täis bussi on vaja
+FULL_BUSES=$((REISIJATE_ARV / KOHTADE_ARV))
+
+# Arvuta, kui palju inimesi jääb maha
+LEFTOVER_PASSENGERS=$((REISIJATE_ARV % KOHTADE_ARV))
+
+# Väljastame tulemused
+echo "$REISIJATE_ARV reisijate transportimiseks saab kasutada $FULL_BUSES $KOHTADE_ARV-kohalist bussi ja $LEFTOVER_PASSENGERS jäävad reisist ilma."
+
+# Kontrolli, kas on inimesi, kes jäävad maha?  Kui nii ,siis tuleb suurendada busside arv 1 võrra.
+if [ $LEFTOVER_PASSENGERS -gt 0 ]; then
+    FULL_BUSES=$((FULL_BUSES + 1))
+echo "Kuna on $LEFTOVER_PASSENGERS reisijat üle, on vaja kokku $FULL_BUSES täisbussi."
+else
+    echo "Kokku on vaja $FULL_BUSES täisbussi."
+fi
