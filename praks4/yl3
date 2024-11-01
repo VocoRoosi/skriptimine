@@ -1,0 +1,24 @@
+if [ $# -lt 2 ]; then
+    echo "Kasutus: $0 <IP aadress> <kasutajanimi>"
+    exit 1
+fi
+
+# Muudame parameetrid muutujateks
+ip_address=$1
+username=$2
+
+# Oodatud väärtused
+expected_ip="172.23.13.20"
+expected_username="opetaja"
+
+# Kuvame sisendi
+echo "Skript: $0"
+echo "IP Aadress: $ip_address"
+echo "Kasutajanimi: $username"
+
+# Kontrollime, kas IP ja kasutajanimi vastavad oodatud väärtustele
+if [ "$ip_address" == "$expected_ip" ] && [ "$username" == "$expected_username" ]; then
+    echo "Sisestatud andmed on õiged."
+else
+    echo "Vale IP aadress või kasutajanimi."
+fi
