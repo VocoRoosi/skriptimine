@@ -1,0 +1,35 @@
+# Tsükli kujundi skript
+
+# Palume kasutajal sisestada ridade arv
+echo -n "Sisesta ridade arv: "
+read ridade_arv
+
+# Palume kasutajal sisestada tärnide arv reas
+echo -n "Sisesta tärnide arv reas: "
+read tarnide_arv
+
+# Välimine tsükkel ridade jaoks
+for (( i = 1; i <= ridade_arv; i++ ))  ### Välimine tsükkel - iga rida
+do
+    # Kui rida on esimene või viimane, siis väljastame tähed kõikides kohtades
+    if [[ $i -eq 1 || $i -eq $ridade_arv ]]; then
+        # Väljasta tähed kõikides kohtades
+        echo -n "$i. "
+        for (( j = 1; j <= tarnide_arv; j++ ))
+        do
+            echo -n "* "
+        done
+    else
+        # Kui rida on vahepealne, siis esimeses ja viimases kohas tähed
+        echo -n "$i. "
+        echo -n "* "      # Esimene täht
+        for (( j = 2; j < tarnide_arv; j++ ))
+        do
+            echo -n "  "   # Tühik keskel
+        done
+        echo -n "* "      # Viimane täht
+    fi
+    echo ""             ### Lõpeta rida ja mine järgmisele
+done
+
+# skripti lõpp
