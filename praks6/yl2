@@ -1,26 +1,28 @@
-# Tsükli skript
 
-# Palume kasutajal sisestada ridade arv
-echo -n "Sisesta ridade arv: "
-read ridade_arv
+# Täisarvu skript
 
-# Palume kasutajal sisestada sümbolite arv reas
-echo -n "Sisesta tärnide arv reas: "
-read tarnide_arv
+# Palume kasutajal sisestada täisarv
+echo "Sisesta suvaline täisarv:"
+read arv
 
-# Välimine tsükkel ridade jaoks
-for (( i = 1; i <= ridade_arv; i++ ))  ### Välimine tsükkel - iga rida
+# Muudame arvu absoluutväärtuseks, kuna tahame ainult numbrite summat
+abs_arv=${arv#-}
+
+# Muutujad, mille abil arvestame numbrite summat
+summa=0
+
+# Arvutame iga numbri summa, kasutades while-tsüklit
+while [ $abs_arv -ne 0 ]
 do
-    # Väljasta rea number
-    echo -n "$i.  "                      ### Väljasta ridade number
-
-    # Sisemine tsükkel tähede (*) jaoks igas reas
-    for (( j = 1; j <= tarnide_arv; j++ ))   ### Sisemine tsükkel - iga täht
-    do
-        echo -n "* "               ### Väljasta täht *
-    done
-
-    # Lõpeta rida ja mine järgmisele
-    echo ""                       ### Täiendame rea lõpus
+    jaak=$(($abs_arv % 10))  # Võtame viimase numbri
+    summa=$(($summa + $jaak))  # Liidame numbri summaga
+    abs_arv=$(($abs_arv / 10))  # Eemaldame viimase numbri
 done
 
+# Kui sisestatud arv oli negatiivne, siis tuleks ka summa negatiivseks muuta
+if [ $arv -lt 0 ]; then
+    summa=$(($summa * -1))
+fi
+
+# Väljund
+echo "Arvu $arv numbrite summa on $summa."
