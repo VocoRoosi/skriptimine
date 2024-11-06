@@ -1,3 +1,6 @@
+
+# Aja järgi tervitamine
+
 # Palume kasutajal sisestada kellaaeg
 echo -e "Sisesta aja väärtus: \c"
 read aeg
