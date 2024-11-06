@@ -1,0 +1,18 @@
+# Tsükli kujundi suurenemine igal real skript
+
+# Palume kasutajal sisestada ridade arv
+echo -n "Sisesta ridade arv: "
+read ridade_arv
+
+# Välimine tsükkel ridade jaoks
+for (( i = 1; i <= ridade_arv; i++ ))  ### Välimine tsükkel - iga rida
+do
+    # Sisemine tsükkel tähede (*) jaoks igas reas
+    for (( j = 1; j <= i; j++ ))   ### Sisemine tsükkel - iga täht
+    do
+        echo -n "* "               ### Väljasta täht *
+    done
+
+    # Lõpeta rida ja mine järgmisele
+    echo ""                       ### Täiendame rea lõpus
+done
