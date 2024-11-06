@@ -1,18 +1,29 @@
-# Tsükli kujundi suurenemine igal real skript
+# Palume kasutajal sisestada suvaline arv
+echo -e "Sisesta suvaline arv: \c"
+read arv
 
-# Palume kasutajal sisestada ridade arv
-echo -n "Sisesta ridade arv: "
-read ridade_arv
+# Kontrollime, kas arv on 0 või 1
+if [ $arv -eq 0 -o $arv -eq 1 ]; then
+    echo "$arv - ei ole algarv"
+else
+    
+    jagaja=2
+    on_algarv=1
 
-# Välimine tsükkel ridade jaoks
-for (( i = 1; i <= ridade_arv; i++ ))  ### Välimine tsükkel - iga rida
-do
-    # Sisemine tsükkel tähede (*) jaoks igas reas
-    for (( j = 1; j <= i; j++ ))   ### Sisemine tsükkel - iga täht
-    do
-        echo -n "* "               ### Väljasta täht *
+
+    while [ $jagaja -le $(($arv / 2)) ]; do
+        # Kui arv jaguneb täpselt jagajaga, siis ei ole tegemist algarvuga
+        if [ $(($arv % $jagaja)) -eq 0 ]; then
+            on_algarv=0
+            break
+        fi
+        jagaja=$(($jagaja + 1))
     done
 
-    # Lõpeta rida ja mine järgmisele
-    echo ""                       ### Täiendame rea lõpus
-done
+    # Väljund vastavalt sellele, kas arv on algarv või mitte
+    if [ $on_algarv -eq 1 ]; then
+        echo "$arv - on algarv"
+    else
+        echo "$arv - ei ole algarv"
+    fi
+fi
