@@ -1,0 +1,24 @@
+# Tsükli o kujundi skript
+
+# Palume kasutajal sisestada ridade arv
+echo -n "Sisesta ridade arv: "
+read ridade_arv
+
+# Välimine tsükkel ridade jaoks
+for (( i = 1; i <= ridade_arv; i++ ))  ### Välimine tsükkel - iga rida
+do
+    # Sisemine tsükkel 'o' tähede jaoks
+    for (( j = 1; j <= (ridade_arv - i); j++ ))   ### Sisemine tsükkel - 'o' tähed
+    do
+        echo -n "o "               ### Väljasta täht o
+    done
+
+    # Sisemine tsükkel '*' tähede jaoks
+    for (( k = 1; k <= i; k++ ))   ### Sisemine tsükkel - '*' tähed
+    do
+        echo -n "* "               ### Väljasta täht *
+    done
+
+    # Lõpeta rida ja mine järgmisele
+    echo ""                       ### Täiendame rea lõpus
+done
