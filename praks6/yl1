@@ -1,17 +1,11 @@
-# Tsükkli skript
+# Tsükli paarisarvude skript
 
-# Välimine tsükkel ridade jaoks
-for (( i = 1; i <= 5; i++ ))      ### Välimine tsükkel - iga rida
+summa=0
+for (( arv=1; arv<=10; arv++ ))
 do
-    # Väljasta rea number
-    echo -n "$i.  "                ### Väljasta ridade number
-
-    # Sisemine tsükkel tähtede (*) jaoks igas reas
-    for (( j = 1; j <= 5; j++ ))   ### Sisemine tsükkel - iga täht
-    do
-        echo -n "* "               ### Väljasta täht *
-    done
-
-    # Lõpeta rida ja mine järgmisele
-    echo ""                       ### Täiendame rea lõpus
+  jaak=$(( $arv % 2 ))
+  if [ $jaak -eq 0 ]; then
+    summa=$(($summa + $arv))
+  fi
 done
+echo "Arvude vahemikus 1 kuni 10 (kaasaarvutud) paarisarvude summa on: $summa"
